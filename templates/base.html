@@ -1,0 +1,58 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Rutas Transbolivar</title>
+    <link href="{% static '/css/bootstrap.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <table class="table table-striped table-condensed">
+        <thead>
+            <tr>
+                <th>HORA</th>
+                <th>UNIDAD</th>
+                <th>RUTA</th>
+                <th>OPERADOR</th>
+                <th>KM</th>
+                <th>GASOLINA</th>
+                <th>SERVICIO</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if activa %} {% for a in activa %} {% if a.gasolina.nivel == '1/4' %}
+            <tr style="background:  #ff7c7c ">
+                <td class="text-dark">{{a.hora}}</td>
+                <td class="text-dark">{{a.unidad}}</td>
+                <td class="text-dark">{{a.ruta}}</td>
+                <td class="text-dark">{{a.operador}}</td>
+                <td class="text-dark">{{a.kilometraje}}</td>
+                <td class="text-dark">{{a.gasolina}}</td>
+                <td class="text-dark">{{a.servicio}}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td class="text-dark">{{a.hora}}</td>
+                <td class="text-dark">{{a.unidad}}</td>
+                <td class="text-dark">{{a.ruta}}</td>
+                <td class="text-dark">{{a.operador}}</td>
+                <td class="text-dark">{{a.kilometraje}}</td>
+                <td class="text-dark">{{a.gasolina}}</td>
+                <td class="text-dark">{{a.servicio}}</td>
+            </tr>
+            {% endif %} {% endfor %} {% endif %}
+
+        </tbody>
+    </table>
+    <script src="{% static 'js/jquery.js' %}"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
+</body>
+
+</html>
