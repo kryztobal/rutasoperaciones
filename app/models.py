@@ -28,6 +28,3 @@ class Activa(models.Model):
     gasolina = models.ForeignKey(Gasolina, on_delete=models.CASCADE)
     servicio = models.CharField(max_length=255, default='', blank=True)
     create_at = models.DateTimeField(auto_now=True)
-
-    def __str__(self):
-        return '{} - {} - {} - {} - {} - {}'.format(self.hora, self.unidad, self.ruta, self.operador, self.gasolina, self.servicio)
