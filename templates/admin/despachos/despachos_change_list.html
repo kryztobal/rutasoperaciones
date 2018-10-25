@@ -1,0 +1,11 @@
+{% extends 'admin/change_list.html' %} {% block object-tools %}{% load staticfiles %}
+<link href="{% static '/css/jquery-ui.css' %}" rel="stylesheet">
+<script src="{% static 'js/jquery-ui.js' %}"></script>
+<form method="POST" class="form-inline">
+    {%csrf_token%}
+    <input id="datepicker" name="fecha" type="text" placeholder="Ingresar fecha">
+    <button class="button" type="submit">Generar Reporte</button>
+</form>
+<script type="text/javascript">
+    $("#datepicker").datepicker();
+</script> {{block.super}} {% endblock object-tools %}

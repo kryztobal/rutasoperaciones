@@ -1,17 +1,19 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Activa, Ruta, Operador
+from .models import Despacho
 import datetime
 
 # Create your views here.
 
-class ActivasListView(generic.View):
+class DespachosListView(generic.ListView):
+    model = Despacho
     template_name = 'base.html'
 
-    def get(self, request, *args, **kwargs):
-        a = Activa.objects.all()
-        context = {
-            'activa': a
-        }
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['ndespachos'] = Despacho.objects.filter(status=1).count()
+        return context
 
-        return render(request, self.template_name, context)
+
+def reporte(request):
+    return "hola"
